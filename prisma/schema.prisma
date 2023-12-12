@@ -9,3 +9,11 @@ datasource db {
   provider = "cockroachdb"
   url      = env("DATABASE_URL")
 }
+
+model Product {
+  id        Int      @id @default(sequence())
+  itemName  String   @unique
+  price     Decimal  @db.Decimal(15, 2)
+  url       String
+  imageURLs String[]
+}
