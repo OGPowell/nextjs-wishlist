@@ -4,6 +4,7 @@
 import { Product } from '@prisma/client';
 import { Decimal } from '@prisma/client/runtime/library';
 import { useState } from 'react';
+import { useAuth } from '../AuthContext';
 
 interface Props {
     product: Product
@@ -11,6 +12,7 @@ interface Props {
 
 export default function ProductCard({ product }: Props) {
     const [hover, setHover] = useState(false);
+    const { loggedIn } = useAuth()
     const imageToShow = hover && product.imageURLs[1] ? product.imageURLs[1] : product.imageURLs[0];
 
     return (
@@ -29,6 +31,10 @@ export default function ProductCard({ product }: Props) {
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">{product.itemName}</h3>
                 <p className="text-gray-700 dark:text-gray-300">{product.price ? formatPrice(product.price) : 'N/A'}</p>
             </div>
+            {loggedIn && (
+                <button>Delete</button>
+                // TODO: Delete Action
+            )}
         </div>
     );
 };
