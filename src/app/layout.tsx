@@ -1,5 +1,6 @@
+import Header from '@/components/Header/Header'
+import { ScrollToTopButton } from '@/components/ScrollToTopButton'
 import { ThemeProvider } from '@/components/ThemeProvider'
-import ThemeSwitcher from '@/components/ThemeSwitcher'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
@@ -7,7 +8,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'My List',
+  title: 'The Wishlist',
   description: 'Christmas & Birthday List',
 }
 
@@ -22,8 +23,9 @@ export default function RootLayout({
         className={`${inter.className} bg-slate-50 dark:bg-[#0d1117] duration-200`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <ThemeSwitcher />
+          <Header />
           <main>{children}</main>
+          <ScrollToTopButton />
         </ThemeProvider>
       </body>
     </html>

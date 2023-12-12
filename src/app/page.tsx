@@ -1,13 +1,21 @@
+import ProductCard from '@/components/Product/ProductCard'
+import prisma from '@/prisma'
 
-const products = [
-  { imageUrl: '/path/to/image1.jpg', price: 19.99 },
-  { imageUrl: '/path/to/image2.jpg', price: 29.99 },
-  { imageUrl: '/path/to/image3.jpg', price: 39.99 },
-  // Add more products as needed
-];
+const fetchProducts = async () => {
+  'use server'
+  const products = await prisma.product.findMany()
 
-export default function Home() {
+  return products
+}
+
+export default async function Home() {
+  const products = await fetchProducts()
+
   return (
-    <h1>Hello World</h1>
-  );
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-5 m-5 overflow-y-auto">
+      {products && products.map((product) =>
+        <ProductCard key={product.id} product={product} />
+      )}
+    </div>
+  )
 }
