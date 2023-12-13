@@ -3,7 +3,7 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-export default function ThemeSwitcher() {
+export default function ThemeSwitcherButton() {
     const [mounted, setMounted] = useState(false);
     const { theme, setTheme } = useTheme();
 
@@ -20,7 +20,7 @@ export default function ThemeSwitcher() {
 
     return (
         <button
-            className={`w-fit absolute right-5 top-2 p-2 rounded-md hover:scale-110 active:scale-100 duration-200 bg-slate-200 dark:bg-[#212933]`}
+            className={`p-2 rounded-md hover:scale-110 active:scale-100 duration-200 bg-slate-200 dark:bg-[#212933]`}
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
         >
             {theme === "light" ? (

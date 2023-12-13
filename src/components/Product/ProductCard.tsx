@@ -4,7 +4,7 @@
 import { Product } from '@prisma/client';
 import { Decimal } from '@prisma/client/runtime/library';
 import { useState } from 'react';
-import { useAuth } from '../AuthContext';
+import { useAuth } from '../Providers/AuthProvider';
 
 interface Props {
     product: Product

@@ -1,8 +1,8 @@
 'use client'
 
-import Dialog from "@/components/Dialog/Dialog"
-import Gallery from "@/components/Gallery/Gallery"
-import ProductForm from "@/components/ProductForm/ProductForm"
+import Dialog from "@/components/Dialog"
+import Gallery from "@/components/Gallery"
+import ProductForm from "@/components/Product/ProductForm"
 import { Prisma } from "@prisma/client"
 import { useState } from "react"
 import SaveProduct from "./saveProduct"
