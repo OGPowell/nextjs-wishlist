@@ -3,16 +3,17 @@
 /* eslint-disable @next/next/no-img-element */
 import { Product } from '@prisma/client';
 import { Decimal } from '@prisma/client/runtime/library';
+import { useSession } from 'next-auth/react';
 import { useState } from 'react';
-import { useAuth } from '../Providers/AuthProvider';
 
 interface Props {
     product: Product
+    handleDelete: (id: number) => Promise<void>
 }
 
-export default function ProductCard({ product }: Props) {
+export default function ProductCard({ product, handleDelete }: Props) {
     const [hover, setHover] = useState(false);
-    const { loggedIn } = useAuth()
+    const { data: session } = useSession()
     const imageToShow = hover && product.imageURLs[1] ? product.imageURLs[1] : product.imageURLs[0];
 
     return (
@@ -27,13 +28,19 @@ export default function ProductCard({ product }: Props) {
                 alt="Product Image"
                 onClick={() => window.location.href = product.url}
             />
+
             <div className="p-4 absolute bottom-0 left-0 w-full bg-white dark:bg-gray-800 rounded-b-lg">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">{product.itemName}</h3>
                 <p className="text-gray-700 dark:text-gray-300">{product.price ? formatPrice(product.price) : 'N/A'}</p>
             </div>
-            {loggedIn && (
-                <button>Delete</button>
-                // TODO: Delete Action
+
+            {session && (
+                <button
+                    className="absolute top-0 right-1"
+                    onClick={() => handleDelete(product.id)}
+                >
+                    <p className="text-xl font-bold text-gray-700">x</p>
+                </button>
             )}
         </div>
     );

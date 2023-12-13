@@ -1,15 +1,15 @@
 'use client'
 
-import { useAuth } from "../Providers/AuthProvider"
+import { signIn, signOut, useSession } from "next-auth/react"
 
 export default function AuthButton() {
-    const { loggedIn, logout, login } = useAuth()
+    const { status } = useSession()
 
     const toggleLogin = () => {
-        if (loggedIn) {
-            logout()
+        if (status === 'authenticated') {
+            signOut()
         } else {
-            login()
+            signIn()
         }
     }
 
@@ -19,7 +19,7 @@ export default function AuthButton() {
             onClick={() => toggleLogin()}
         >
             <p>
-                {loggedIn ? ('Sign Out') : ('Sign In')}
+                {status === "authenticated" ? ('Sign Out') : ('Sign In')}
             </p>
         </button>
     )
