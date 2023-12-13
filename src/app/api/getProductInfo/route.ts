@@ -1,8 +1,7 @@
-import type { NextApiRequest } from 'next';
 import { NextResponse } from 'next/server';
 import ExtractImages from './ExtractImages';
 
-export async function GET(request: NextApiRequest) {
+export async function GET(request: Request) {
     const params = new URLSearchParams(request.url?.split('?')[1]);
     const link = params.get('link');
 

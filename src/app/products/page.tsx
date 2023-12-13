@@ -1,11 +1,11 @@
 'use client'
 
-import Dialog from "@/components/Dialog/Dialog"
-import Gallery from "@/components/Gallery/Gallery"
-import ProductForm from "@/components/ProductForm/ProductForm"
+import Dialog from "@/components/Dialog"
+import Gallery from "@/components/Gallery"
 import { Prisma } from "@prisma/client"
 import { useState } from "react"
-import SaveProduct from "./saveProduct"
+import saveProduct from "../product"
+import ProductForm from "./ProductForm"
 
 export default function Page() {
     const [product, setProduct] = useState<Prisma.ProductCreateInput | null>(null)
@@ -19,7 +19,7 @@ export default function Page() {
     async function onOk() {
         if (product) {
             product.imageURLs = selectedImages
-            const savedProduct = SaveProduct(product)
+            const savedProduct = saveProduct(product)
             console.log('Saved Product: ', savedProduct)
         }
         setShowDialog(false)

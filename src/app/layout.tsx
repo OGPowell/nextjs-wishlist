@@ -1,6 +1,7 @@
-import Header from '@/components/Header/Header'
-import { ScrollToTopButton } from '@/components/ScrollToTopButton'
-import { ThemeProvider } from '@/components/ThemeProvider'
+import { ScrollToTopButton } from '@/components/Buttons/ScrollToTopButton'
+import Header from '@/components/Header'
+import AuthProvider from '@/components/Providers/AuthProvider'
+import { ThemeProvider } from '@/components/Providers/ThemeProvider'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
@@ -22,11 +23,13 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-slate-50 dark:bg-[#0d1117] duration-200`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Header />
-          <main>{children}</main>
-          <ScrollToTopButton />
-        </ThemeProvider>
+        <AuthProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <Header />
+            <main>{children}</main>
+            <ScrollToTopButton />
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );

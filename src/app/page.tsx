@@ -1,20 +1,34 @@
-import ProductCard from '@/components/Product/ProductCard'
-import prisma from '@/prisma'
+"use client"
 
-const fetchProducts = async () => {
-  'use server'
-  const products = await prisma.product.findMany()
+import ProductCard from '@/components/Product/ProductCard';
+import { Product } from '@prisma/client';
+import { useEffect, useState } from 'react';
+import { deleteProduct, fetchProducts } from './product';
 
-  return products
-}
+export default function Home() {
+  const [products, setProducts] = useState<Product[]>([]);
 
-export default async function Home() {
-  const products = await fetchProducts()
+  useEffect(() => {
+    const fetchAndSetProducts = async () => {
+      const fetchedProducts = await fetchProducts();
+      setProducts(fetchedProducts);
+    };
+
+    fetchAndSetProducts();
+  }, []);
+
+  const handleDelete = async (id: number) => {
+    const deletedProduct = await deleteProduct(id)
+    const fetchedProducts = await fetchProducts();
+
+    console.log(deletedProduct)
+    setProducts(fetchedProducts);
+  }
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-5 m-5 overflow-y-auto">
       {products && products.map((product) =>
-        <ProductCard key={product.id} product={product} />
+        <ProductCard key={product.id} product={product} handleDelete={handleDelete} />
       )}
     </div>
   )
