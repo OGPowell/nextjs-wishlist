@@ -2,7 +2,6 @@
 
 /* eslint-disable @next/next/no-img-element */
 import { Product } from '@prisma/client';
-import { Decimal } from '@prisma/client/runtime/library';
 import { useSession } from 'next-auth/react';
 import { useState } from 'react';
 
@@ -46,6 +45,6 @@ export default function ProductCard({ product, handleDelete }: Props) {
     );
 };
 
-function formatPrice(price: Decimal): string {
+function formatPrice(price: Number): string {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(Number(price));
 };
