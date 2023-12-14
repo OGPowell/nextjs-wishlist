@@ -11,6 +11,7 @@ export default function Page() {
     const [product, setProduct] = useState<Prisma.ProductCreateInput | null>(null)
     const [selectedImages, setSelectedImages] = useState<string[]>([]);
     const [showDialog, setShowDialog] = useState<boolean>(false)
+    const [loading, setLoading] = useState<boolean>(false)
 
     async function onClose() {
         setShowDialog(false)
@@ -26,6 +27,7 @@ export default function Page() {
     }
 
     const onSubmit = async (formData: FormData) => {
+        setLoading(true)
         const itemName = formData.get('itemName') as string
         const link = formData.get('link') as string
         const price = formData.get('price') as string
@@ -38,7 +40,7 @@ export default function Page() {
 
             const product: Prisma.ProductCreateInput = {
                 itemName: itemName,
-                price: price,
+                price: parseInt(price),
                 imageURLs: imageURLs,
                 url: link
             }
@@ -48,6 +50,8 @@ export default function Page() {
         } else {
             console.error('Error:', response.status, response.statusText)
         }
+
+        setLoading(false)
     }
 
     return (
@@ -57,7 +61,7 @@ export default function Page() {
             </Dialog>
             )}
 
-            <ProductForm onSubmit={onSubmit} />
+            <ProductForm onSubmit={onSubmit} loading={loading} />
         </>
     )
 }
