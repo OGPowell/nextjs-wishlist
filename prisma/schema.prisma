@@ -13,7 +13,7 @@ datasource db {
 model Product {
   id        Int      @id @default(sequence())
   itemName  String   @unique
-  price     Decimal  @db.Decimal(15, 2)
+  price     Int      @default(0)
   url       String
   imageURLs String[]
 }
