@@ -33,11 +33,10 @@ export const authOptions: NextAuthOptions = {
     callbacks: {
         signIn({ user, account }) {
             console.log(account)
-            if (user.name === process.env.USER_NAME) {
-                return Promise.resolve(true)
-            } else {
+            if (process.env.VERCEL_ENV !== "preview" && user.name !== process.env.USER_NAME) {
                 return Promise.resolve(false)
             }
+            return Promise.resolve(true)
         }
     },
     theme: {
