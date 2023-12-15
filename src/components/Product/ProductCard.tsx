@@ -17,7 +17,7 @@ export default function ProductCard({ product, handleDelete }: Props) {
 
     return (
         <div
-            className="card rounded-b-lg bg-white dark:bg-gray-800 shadow hover:shadow-lg overflow-hidden w-96 h-96 relative cursor-pointer"
+            className="card rounded-lg bg-white dark:bg-gray-800 shadow hover:shadow-lg overflow-hidden w-96 h-96 relative cursor-pointer"
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
         >
@@ -26,10 +26,13 @@ export default function ProductCard({ product, handleDelete }: Props) {
                 src={imageToShow}
                 alt="Product Image"
                 onClick={() => window.location.href = product.url}
+                onError={(e) => {
+                    e.currentTarget.src = "no-image.svg"; // replace with your default SVG path
+                }}
             />
 
             <div className="p-4 absolute bottom-0 left-0 w-full bg-white dark:bg-gray-800 rounded-b-lg">
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">{product.itemName}</h3>
+                <h3 className="truncate text-xl font-bold mb-2 text-gray-900 dark:text-white">{product.itemName}</h3>
                 <p className="text-gray-700 dark:text-gray-300">{product.price ? formatPrice(product.price) : 'N/A'}</p>
             </div>
 
