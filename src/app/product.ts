@@ -14,7 +14,11 @@ export async function deleteProduct(productId: number): Promise<Product> {
 }
 
 export async function fetchProducts(): Promise<Product[]> {
-    const products = await prisma.product.findMany()
+    const products = await prisma.product.findMany({
+        orderBy: {
+            price: 'asc'
+        }
+    })
 
     return products
 }
