@@ -17,7 +17,7 @@ export default function ProductCard({ product, handleDelete }: Props) {
 
     return (
         <div
-            className="card rounded-lg bg-white dark:bg-gray-800 shadow hover:shadow-lg overflow-hidden w-96 h-96 relative cursor-pointer"
+            className="card rounded-lg bg-white dark:bg-gray-800 shadow hover:shadow-lg overflow-hidden w-full aspect-square relative cursor-pointer"
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
         >
