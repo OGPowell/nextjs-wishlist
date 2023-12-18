@@ -14,6 +14,7 @@ export default function Page() {
     const [loading, setLoading] = useState<boolean>(false)
 
     async function onClose() {
+        setSelectedImages([])
         setShowDialog(false)
     }
 
