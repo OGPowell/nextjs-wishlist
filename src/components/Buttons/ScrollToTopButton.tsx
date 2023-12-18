@@ -7,7 +7,7 @@ export const ScrollToTopButton = () => {
 
     // Show button when page is scrolled up to given distance
     const toggleVisibility = () => {
-        if (window.scrollY > 300) {
+        if (window.scrollY > 100) {
             setIsVisible(true);
         } else {
             setIsVisible(false);
@@ -29,10 +29,15 @@ export const ScrollToTopButton = () => {
     }, []);
 
     return (
-        <div className="scroll-to-top">
+        <div className="fixed bottom-10 right-10 z-50 cursor-pointer">
             {isVisible &&
-                <div onClick={scrollToTop}>
-                    Scroll to top
+                <div
+                    className='bg-blue-600 hover:bg-blue-700 text-white w-12 h-12 rounded-full flex items-center justify-center'
+                    onClick={scrollToTop}
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-up">
+                        <polyline points="18 15 12 9 6 15"></polyline>
+                    </svg>
                 </div>}
         </div>
     );
