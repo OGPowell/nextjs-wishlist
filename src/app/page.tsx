@@ -26,7 +26,7 @@ export default function Home() {
   }
 
   return (
-    <div className="grid items-center grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 xxl:grid-cols-4 gap-5 m-5 overflow-y-auto">
+    <div className="grid items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 m-5 overflow-y-auto">
       {products && products.map((product) =>
         <ProductCard key={product.id} product={product} handleDelete={handleDelete} />
       )}
