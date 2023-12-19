@@ -5,6 +5,7 @@ import { Product } from '@prisma/client';
 import { useSession } from 'next-auth/react';
 import { useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
+import Dots from './Dots';
 
 interface Props {
     product: Product
@@ -12,10 +13,8 @@ interface Props {
 }
 
 export default function ProductCard({ product, handleDelete }: Props) {
-    const [hover, setHover] = useState(false);
     const { data: session } = useSession()
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const [startX, setStartX] = useState(0);
 
     const handleNextImage = () => {
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % product.imageURLs.length);
@@ -34,8 +33,6 @@ export default function ProductCard({ product, handleDelete }: Props) {
     return (
         <div
             className="card rounded-lg bg-white dark:bg-gray-800 shadow hover:shadow-lg overflow-hidden w-full aspect-square relative cursor-pointer"
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
             {...handlers}
         >
             <img
@@ -46,7 +43,7 @@ export default function ProductCard({ product, handleDelete }: Props) {
                     e.currentTarget.src = "no-image.svg"; // replace with your default SVG path
                 }}
             />
-
+            <Dots count={product.imageURLs.length} currentIndex={currentImageIndex} />
             <div onClick={() => window.open(product.url, '_blank')} className="p-4 absolute bottom-0 left-0 w-full bg-white dark:bg-gray-800 rounded-b-lg">
                 <h3 className="truncate text-xl font-bold mb-2 text-gray-900 dark:text-white">{product.itemName}</h3>
                 <p className="text-gray-700 dark:text-gray-300">{product.price ? formatPrice(product.price) : 'N/A'}</p>
