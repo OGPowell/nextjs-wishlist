@@ -35,8 +35,8 @@ export const ScrollToTopButton = () => {
                     className='bg-blue-600 hover:bg-blue-700 text-white w-12 h-12 rounded-full flex items-center justify-center'
                     onClick={scrollToTop}
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-up">
-                        <polyline points="18 15 12 9 6 15"></polyline>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="50%" height="50%">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
                     </svg>
                 </div>}
         </div>
