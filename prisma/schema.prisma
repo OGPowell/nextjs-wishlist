@@ -14,6 +14,6 @@ model Product {
   id        Int      @id @default(sequence())
   itemName  String   @unique
   price     Int      @default(0)
-  url       String
+  url       String   @unique
   imageURLs String[]
 }
