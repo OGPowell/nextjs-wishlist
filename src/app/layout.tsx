@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${inter.className} bg-slate-50 duration-200 dark:bg-[#0d1117]`}
+        className={`${inter.className} bg-slate-50 font-mono duration-200 dark:bg-[#0d1117]`}
       >
         <AuthProvider>
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
