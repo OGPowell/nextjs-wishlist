@@ -17,7 +17,7 @@ export default function ThemeSwitcherButton() {
 
   return (
     <button
-      className={`rounded-md bg-slate-200 p-2 duration-200 hover:scale-110 active:scale-100 dark:bg-[#212933]`}
+      className={`rounded-md bg-blue-500 p-2 text-white duration-200 hover:scale-110 active:scale-100 dark:bg-purple-500`}
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
     >
       {theme === 'light' ? (
