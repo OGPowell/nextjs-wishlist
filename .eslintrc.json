@@ -1,5 +1,5 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": ["next", "prettier"],
   "rules": {
     "no-restricted-imports": [
       "error",
@@ -7,9 +7,7 @@
         "paths": [
           {
             "name": "@prisma/client",
-            "importNames": [
-              "PrismaClient"
-            ],
+            "importNames": ["PrismaClient"],
             "message": "Please import PrismaClient from prisma.ts instead."
           }
         ]
@@ -18,9 +16,7 @@
   },
   "overrides": [
     {
-      "files": [
-        "src/prisma.ts"
-      ],
+      "files": ["src/prisma.ts"],
       "rules": {
         "no-restricted-imports": "off"
       }
