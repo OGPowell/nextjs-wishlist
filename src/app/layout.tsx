@@ -2,6 +2,7 @@ import { ScrollToTopButton } from '@/components/Buttons/ScrollToTopButton';
 import Header from '@/components/Header';
 import AuthProvider from '@/components/Providers/AuthProvider';
 import { ThemeProvider } from '@/components/Providers/ThemeProvider';
+import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
@@ -32,6 +33,7 @@ export default function RootLayout({
           </ThemeProvider>
         </AuthProvider>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
