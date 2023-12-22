@@ -44,6 +44,7 @@ export default function ProductCard({ product, handleDelete }: Props) {
         className='h-3/4 w-full rounded-t-lg object-cover'
         src={product.imageURLs[currentImageIndex]}
         alt='Product Image'
+        onClick={() => handleNextImage()}
         onError={(e) => {
           e.currentTarget.src = 'no-image.svg'; // replace with your default SVG path
         }}
