@@ -82,7 +82,7 @@ export default function ProductForm({ onSubmit, loading }: Props) {
         ) : (
           <button
             type='submit'
-            className='mt-4 w-full rounded-md bg-blue-600 px-4 py-2 text-sm text-white hover:bg-blue-700'
+            className='mt-4 w-full rounded-md bg-blue-500 px-4 py-2 text-sm text-white duration-200 hover:scale-110 active:scale-100 dark:bg-purple-500'
           >
             Submit
           </button>

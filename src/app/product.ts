@@ -13,12 +13,26 @@ export async function deleteProduct(productId: number): Promise<Product> {
   return deletedProduct;
 }
 
-export async function fetchProducts(): Promise<Product[]> {
-  const products = await prisma.product.findMany({
-    orderBy: {
-      price: 'asc',
-    },
-  });
+export async function fetchProducts(price: number): Promise<Product[]> {
+  let products;
+  if (price === -1) {
+    products = await prisma.product.findMany({
+      orderBy: {
+        price: 'asc',
+      },
+    });
+  } else {
+    products = await prisma.product.findMany({
+      where: {
+        price: {
+          lt: price,
+        },
+      },
+      orderBy: {
+        price: 'asc',
+      },
+    });
+  }
 
   return products;
 }
