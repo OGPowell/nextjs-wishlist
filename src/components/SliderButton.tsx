@@ -35,28 +35,28 @@ export default function SliderFunction({ onSlide }: Props) {
         />
         <div className='relative z-50 flex flex-row justify-around rounded-lg'>
           <button
-            className={'h-10 w-1/4 font-bold'}
+            className={'h-10 w-1/4 text-xs font-bold md:text-lg'}
             onClick={() => handleSlide(-1)}
           >
             {'All'}
           </button>
           <button
-            className={'h-10 w-1/4 font-bold'}
+            className={'h-10 w-1/4 text-xs font-bold md:text-lg'}
             onClick={() => handleSlide(25)}
           >
-            {'<25'}
+            {'Under $25'}
           </button>
           <button
-            className={'h-10 w-1/4 font-bold'}
+            className={'h-10 w-1/4 text-xs font-bold md:text-lg'}
             onClick={() => handleSlide(50)}
           >
-            {'<50'}
+            {'Under $50'}
           </button>
           <button
-            className={'h-10 w-1/4 font-bold'}
+            className={'h-10 w-1/4 text-xs font-bold md:text-lg'}
             onClick={() => handleSlide(100)}
           >
-            {'<100'}
+            {'Under $100'}
           </button>
         </div>
       </div>
