@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import ProductCard from '@/components/Product/ProductCard';
 import ProductCardSkeleton from '@/components/Product/ProductCardSkeleton';
@@ -8,38 +8,40 @@ import { deleteProduct, fetchProducts } from './product';
 
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchAndSetProducts = async () => {
-      setLoading(true)
+      setLoading(true);
       const fetchedProducts = await fetchProducts();
       setProducts(fetchedProducts);
-      setLoading(false)
+      setLoading(false);
     };
 
     fetchAndSetProducts();
   }, []);
 
   const handleDelete = async (id: number) => {
-    const deletedProduct = await deleteProduct(id)
+    const deletedProduct = await deleteProduct(id);
     const fetchedProducts = await fetchProducts();
 
-    console.log(deletedProduct)
+    console.log(deletedProduct);
     setProducts(fetchedProducts);
-  }
+  };
 
   return (
-    <div className="grid items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 m-5 overflow-y-auto">
-      {loading ? (
-        Array.from({ length: 12 }, (_, index) => (
-          <ProductCardSkeleton key={index} />
-        ))
-      ) : (
-        products.map((product) => (
-          <ProductCard key={product.id} product={product} handleDelete={handleDelete} />
-        ))
-      )}
+    <div className='m-5 grid grid-cols-1 items-center gap-5 overflow-y-auto sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+      {loading
+        ? Array.from({ length: 12 }, (_, index) => (
+            <ProductCardSkeleton key={index} />
+          ))
+        : products.map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              handleDelete={handleDelete}
+            />
+          ))}
     </div>
-  )
+  );
 }
