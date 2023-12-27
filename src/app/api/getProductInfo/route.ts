@@ -14,7 +14,12 @@ export async function GET(request: Request) {
 
   try {
     // Fetch product details from Amazon API
-    const productResponse = await fetch(link as string);
+    const productResponse = await fetch(link as string, {
+      headers: {
+        'User-Agent':
+          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+      },
+    });
     const html = await productResponse.text();
 
     const imageURLs = ExtractImages(html);
