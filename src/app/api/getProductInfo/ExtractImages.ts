@@ -3,13 +3,15 @@ import { JSDOM } from 'jsdom';
 export default function ExtractImages(html: string): string[] {
   const dom = new JSDOM(html);
   const images = dom.window.document.querySelectorAll('img');
-  let imageURLs = Array.from(images).map((img) => {
-    let src = img.src;
-    if (!src.startsWith('http://') && !src.startsWith('https://')) {
-      src = 'https:' + src;
-    }
-    return src;
-  });
+  let imageURLs = Array.from(images)
+    .map((img) => {
+      let src = img.src;
+      if (!src.startsWith('http://') && !src.startsWith('https://')) {
+        src = 'https:' + src;
+      }
+      return src;
+    })
+    .filter((url) => !url.endsWith('.svg')); // Ignore SVGs
 
   // Only return the first 10 images
   imageURLs = imageURLs.slice(0, 20);

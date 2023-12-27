@@ -37,7 +37,7 @@ export default function ProductCard({ product, handleDelete }: Props) {
 
   return (
     <div
-      className='card relative aspect-square w-full cursor-pointer overflow-hidden rounded-lg bg-white shadow hover:shadow-lg dark:bg-gray-800'
+      className='card relative aspect-square w-full cursor-pointer overflow-hidden rounded-lg bg-light-background shadow hover:shadow-lg dark:bg-dark-background'
       {...handlers}
     >
       <img
@@ -52,7 +52,7 @@ export default function ProductCard({ product, handleDelete }: Props) {
       <Dots count={product.imageURLs.length} currentIndex={currentImageIndex} />
       <div
         onClick={() => window.open(product.url, '_blank')}
-        className='absolute bottom-0 left-0 w-full rounded-b-lg bg-white p-4 dark:bg-gray-800'
+        className='absolute bottom-0 left-0 w-full rounded-b-lg bg-light-foreground p-4 dark:bg-dark-foreground'
       >
         <h3 className='mb-2 truncate text-xl font-bold text-gray-900 dark:text-white'>
           {product.itemName}

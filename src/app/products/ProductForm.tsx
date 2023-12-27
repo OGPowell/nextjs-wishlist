@@ -29,7 +29,7 @@ export default function ProductForm({ onSubmit, loading }: Props) {
     <div className='flex items-center justify-center'>
       <form
         onSubmit={handleSubmit}
-        className='w-full max-w-sm rounded-md bg-slate-50 p-6 shadow-md dark:bg-[#0d1117]'
+        className='w-full max-w-sm rounded-md bg-light-foreground p-6 shadow-md dark:bg-dark-foreground'
       >
         <h1 className='mb-4 text-center text-xl font-bold'>
           Add Product to List
@@ -39,28 +39,28 @@ export default function ProductForm({ onSubmit, loading }: Props) {
             type='text'
             required
             name='itemName'
-            className='w-full rounded border-2 border-gray-200 p-3 outline-none focus:border-blue-500'
+            className='w-full rounded border-2 border-gray-200 p-3 outline-none'
             placeholder='Enter Item Name'
           />
           <input
             type='text'
             required
             name='link'
-            className='w-full rounded border-2 border-gray-200 p-3 outline-none focus:border-blue-500'
+            className='w-full rounded border-2 border-gray-200 p-3 outline-none'
             placeholder='Enter link'
           />
           <input
             type='number'
             required
             name='price'
-            className='w-full rounded border-2 border-gray-200 p-3 outline-none focus:border-blue-500'
+            className='w-full rounded border-2 border-gray-200 p-3 outline-none'
             placeholder='Enter price'
           />
         </div>
         {loading ? (
           <button
             disabled
-            className='mt-4 flex w-full justify-center rounded-md bg-blue-600 px-4 py-2 text-sm text-white hover:bg-blue-700'
+            className='bg-light-button dark:bg-dark-button py-2duration-200 mt-4 flex w-full justify-center rounded-md px-4 hover:scale-110 active:scale-100'
           >
             <svg className='... mr-3 h-5 w-5 animate-spin' viewBox='0 0 24 24'>
               <circle
@@ -82,7 +82,7 @@ export default function ProductForm({ onSubmit, loading }: Props) {
         ) : (
           <button
             type='submit'
-            className='mt-4 w-full rounded-md bg-blue-500 px-4 py-2 text-sm text-white duration-200 hover:scale-110 active:scale-100 dark:bg-purple-500'
+            className='bg-light-button dark:bg-dark-button mt-4 w-full rounded-md px-4 py-2 duration-200 hover:scale-110 active:scale-100'
           >
             Submit
           </button>

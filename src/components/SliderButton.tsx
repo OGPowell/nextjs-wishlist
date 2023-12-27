@@ -17,7 +17,7 @@ export default function SliderFunction({ onSlide }: Props) {
   };
 
   return (
-    <div className='m-5 rounded-lg bg-slate-200 p-2 dark:bg-[#212933]'>
+    <div className='m-5 rounded-lg'>
       <div className='relative'>
         <div
           style={{
@@ -31,7 +31,7 @@ export default function SliderFunction({ onSlide }: Props) {
                     : '300%'
             })`,
           }}
-          className={`absolute z-10 flex h-10 w-1/4 items-center justify-center rounded-md bg-blue-500 font-bold transition-transform duration-500 ease-in-out dark:bg-purple-500`}
+          className={`bg-light-button dark:bg-dark-button absolute z-10 flex h-10 w-1/4 items-center justify-center rounded-md font-bold transition-transform duration-500 ease-in-out`}
         />
         <div className='relative z-50 flex flex-row justify-around rounded-lg'>
           <button

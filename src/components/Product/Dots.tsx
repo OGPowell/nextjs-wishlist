@@ -13,7 +13,7 @@ export default function Dots({
             key={index}
             className={`z-50 h-1 w-1 rounded-full ${
               index === currentIndex
-                ? 'bg-blue-500 dark:bg-purple-500'
+                ? 'bg-light-button dark:bg-dark-button'
                 : 'bg-gray-300'
             }`}
           />

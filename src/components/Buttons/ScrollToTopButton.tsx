@@ -32,7 +32,7 @@ export const ScrollToTopButton = () => {
     <div className='fixed bottom-10 right-10 z-50 cursor-pointer'>
       {isVisible && (
         <div
-          className='flex h-12 w-12 items-center justify-center rounded-full bg-blue-500 text-white hover:scale-110 active:scale-100 dark:bg-purple-500 '
+          className='bg-light-button dark:bg-dark-button flex h-12 w-12 items-center justify-center rounded-full hover:scale-110 active:scale-100'
           onClick={scrollToTop}
         >
           <svg
